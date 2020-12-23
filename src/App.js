@@ -1,10 +1,25 @@
+import React from 'react';
 import './App.css';
 import Whiteboard from './whiteboard'
 import styled from 'styled-components';
+import SearchBar from './tools/SearchBar';
 
 function App() {
 
-  const AppWrapper = styled.div`
+  return (
+    <AppWrapper className="App">
+      <Header className="App-header">
+       <h1 className="Title">MTG Card Tool</h1>
+       <Whiteboard />
+      </Header>
+      <Body>
+        <SearchBar />
+      </Body>
+    </AppWrapper>
+  );
+}
+
+const AppWrapper = styled.body`
     margin:0 auto;
     width:80%;
     height:100vh;
@@ -24,24 +39,11 @@ function App() {
     justify-content:center;
     align-items:center;
   `
-  const Body = styled.body`
+  const Body = styled.div`
     width:70%;
     height:80vh;
     background:white;
     align-self:center;
   `
-
-  return (
-    <AppWrapper className="App">
-      <Header className="App-header">
-       <h1 className="Title">MTG Card Tool</h1>
-       <Whiteboard />
-      </Header>
-      <Body>
-          
-      </Body>
-    </AppWrapper>
-  );
-}
 
 export default App;

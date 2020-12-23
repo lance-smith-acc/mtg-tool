@@ -1,18 +1,11 @@
+
 import './App.css';
 import styled from 'styled-components'
 
 export default function Whiteboard() {
-    const Whiteboard = styled.div`
-        width:100%;
-        height:100%;
-        padding-top:2%;
-        justify-content:center;
-        background:papayawhip;
-        align-items:center;
-        text-align:center;
-    `
+
     return(
-        <Whiteboard>
+        <WhiteboardWrapper>
             <h2 className="WhiteboardTitle">Whiteboard</h2>
             <h3>Things to Do</h3>
             <ul>
@@ -21,6 +14,16 @@ export default function Whiteboard() {
                 <li>Make a card object</li>
                 <li>Display card objects</li>
             </ul>
-        </Whiteboard>
+        </WhiteboardWrapper>
     )
 }
+
+const WhiteboardWrapper = styled.div`
+width:100%;
+height:100%;
+padding-top:2%;
+justify-content:center;
+background:papayawhip;
+align-items:center;
+text-align:center;
+`
