@@ -1,10 +1,31 @@
-import React from 'react';
+import React,{useState, useEffect} from 'react';
 import './App.css';
 import Whiteboard from './whiteboard'
 import styled from 'styled-components';
-import SearchBar from './tools/SearchBar';
+import {SearchBar} from './components/SearchBar';
+import {CardTemplate} from './components/cardTemplate'
 
 function App() {
+
+  const [cardName, setCard] = useState('')
+  const [cardData, setData] = useState([''])
+  const mtg = require('mtgsdk')
+
+  const handleChange = e => {
+    setCard(e.target.value);
+    console.log(cardName);
+  }
+  
+  const handleSubmit = async a => {
+    a.preventDefault();
+    mtg.card.where({name:cardName})
+    .then(cards => {
+        console.log('made it to promise')
+        console.log(cards)
+        setData(cards)
+    })
+    console.log(`test success \n${cardData}`)
+  }
 
   return (
     <AppWrapper className="App">
@@ -13,7 +34,11 @@ function App() {
        <Whiteboard />
       </Header>
       <Body>
-        <SearchBar />
+        <SearchBar handleChange={handleChange} handleSubmit={handleSubmit} />
+        { cardData.map(card => (
+          <CardTemplate name={card.name} text={card.text} image_url={card.imageUrl} />
+        ))
+          }
       </Body>
     </AppWrapper>
   );
@@ -21,8 +46,8 @@ function App() {
 
 const AppWrapper = styled.body`
     margin:0 auto;
-    width:80%;
-    height:100vh;
+    width:100%;
+    height:100%;
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -30,9 +55,9 @@ const AppWrapper = styled.body`
   `
 
   const Header = styled.header`
-    width:70%;
+    width:90%;
     height:20vh;
-    margin:0% 15%;
+    margin:0 auto;
     background:slategrey;
     display:flex;
     flex-direction:column;
@@ -40,10 +65,13 @@ const AppWrapper = styled.body`
     align-items:center;
   `
   const Body = styled.div`
-    width:70%;
-    height:80vh;
+    width:90%;
+    height:100%;
+    display:flex;
+    flex-wrap:wrap;
     background:white;
-    align-self:center;
+    margin:0 auto;
+    justify-content:space-around;
   `
 
 export default App;
