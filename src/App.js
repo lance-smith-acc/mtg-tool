@@ -18,11 +18,14 @@ function App() {
   
   const handleSubmit = async a => {
     a.preventDefault();
+    setData([])
     mtg.card.where({name:cardName})
     .then(cards => {
         console.log('made it to promise')
         console.log(cards)
-        setData(cards)
+        let filteredCards = cards.filter( (ele, ind) => ind === cards.findIndex(elem => elem.name === ele.name && elem.manaCost === ele.manaCost))
+        setData(filteredCards)
+        console.log(filteredCards)
     })
     console.log(`test success \n${cardData}`)
   }
@@ -35,10 +38,13 @@ function App() {
       </Header>
       <Body>
         <SearchBar handleChange={handleChange} handleSubmit={handleSubmit} />
-        { cardData.map(card => (
+        <CardContainer>
+          { cardData.map(card => (
           <CardTemplate name={card.name} text={card.text} image_url={card.imageUrl} />
         ))
           }
+        </CardContainer>
+        
       </Body>
     </AppWrapper>
   );
@@ -72,6 +78,14 @@ const AppWrapper = styled.body`
     background:white;
     margin:0 auto;
     justify-content:space-around;
+  `
+
+  const CardContainer = styled.div`
+    width:90%;
+    display:flex;
+    flex-wrap:wrap;
+    flex-direction:row;
+    justify-content:space-between;
   `
 
 export default App;

@@ -21,20 +21,25 @@ export const SearchBar = props => {
 }
 
 const Form = styled.form`
-height:20vh;
-width:100%;
-align-self:center;
-text-align:center;
+    margin:1% 0;
+    height:8vh;
+    width:100%;
+    align-self:center;
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:space-around;
 `
 const Input = styled.input`
-width:50%;
-height:15%;
-margin:1% 25%;
-text-align:center;
-font: 24px black Arial;
+    width:25%;
+    height:30%;
+    text-align:center;
+    font: 24px black Arial;
 `
 
 const Button = styled.button`
-width:15%;
-height:15%;
+    padding:.2%;
+    text-align:center;
+    margin:0 auto;
 `
