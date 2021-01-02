@@ -17,11 +17,12 @@ export const CardTemplate = ({image_url, name, text}) => {
 }
 
 const CardImage = styled.img`
-    width:30%;
-    height:100%;
+    height:3.5in;
+    margin-top:1%;
 `
 const CardNoImage = styled.div`
-    width:30%;
-    height:100%;
+    margin-top:1%;
+    width:2.5in;
+    height:3.5in;
     border:1px solid black;
 `
