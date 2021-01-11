@@ -6,40 +6,41 @@ export const SearchBar = props => {
 
   return (
         <Form>
-            <Input type='text' onChange={e => props.handleChange(e)}
+            <Input type='text' 
+                onChange={e => props.handleChange(e)}
                 onSubmit={e => {
                     e.preventDefault();
                     props.handleSubmit(e)}
                 }
             />
-            <Button type='button' onClick={e => {
-                 e.preventDefault();
+            <Button type='submit' onClick={e => {
+                e.preventDefault();
                 props.handleSubmit(e)}
-                }>Big Test Button</Button>
+            }>O</Button>
+            <Button type='edit' onClick={e => {
+                e.preventDefault(); 
+                props.displayRefine()}
+            }>R</Button>
         </Form>
     )
 }
 
 const Form = styled.form`
-    margin:1% 0;
-    height:8vh;
+    margin:2% 0;
+    height:3vh;
     width:100%;
-    align-self:center;
     text-align:center;
     display:flex;
-    flex-direction:column;
     align-items:center;
-    justify-content:space-around;
+    justify-content:center;
 `
 const Input = styled.input`
     width:25%;
-    height:30%;
-    text-align:center;
-    font: 24px black Arial;
+    height:1.8rem;
 `
 
 const Button = styled.button`
-    padding:.2%;
-    text-align:center;
-    margin:0 auto;
+    padding:.5rem;
+    padding-left:.6rem;
+    padding-right:.6rem;
 `
